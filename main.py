@@ -103,8 +103,26 @@ def bisection(
             - Liczba wykonanych iteracji.
         Jeżeli dane wejściowe są niepoprawne funkcja zwraca `None`.
     """
-    pass
+    if f(a)*f(b)>=0:
+        return None
+    iter=1
+    x0=(a+b)/2
+    while iter<max_iter and abs(f(x0))>epsilon:
+        #print(x0)
+        if f(x0)<0:
+            if a<b:
+                a=x0
+            else:
+                b=x0
+        else:
+            if a<b:
+                b=x0
+            else:
+                a=x0
+        x0=(a+b)/2
+        iter=iter+1
 
+    return (x0,iter)
 
 def secant(
     a: int | float,
@@ -130,7 +148,7 @@ def secant(
             - Liczba wykonanych iteracji.
         Jeżeli dane wejściowe są niepoprawne funkcja zwraca `None`.
     """
-    pass
+    
 
 
 def difference_quotient(
@@ -150,7 +168,7 @@ def difference_quotient(
         (float): Wartość ilorazu różnicowego.
         Jeżeli dane wejściowe są niepoprawne funkcja zwraca `None`.
     """
-    pass
+    return (f(x+h)-f(x))/h
 
 
 def newton(

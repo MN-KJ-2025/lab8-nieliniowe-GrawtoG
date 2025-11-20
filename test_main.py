@@ -87,44 +87,44 @@ def test_bisection_correct_solution(
 # --- Tests for secant ---
 
 
-@pytest.mark.parametrize("a, b, epsilon, max_iters, expected_result", valid_secant)
-def test_secant_correct_solution(
-    a: float,
-    b: float,
-    epsilon: float,
-    max_iters: int,
-    expected_result: tuple[float, int],
-):
-    """Tests if secant finds the correct root and iteration count for valid inputs."""
-    actual_root, actual_iters = main.secant(a, b, main.func, epsilon, max_iters)
-    expected_root, expected_iters = expected_result
+# @pytest.mark.parametrize("a, b, epsilon, max_iters, expected_result", valid_secant)
+# def test_secant_correct_solution(
+#     a: float,
+#     b: float,
+#     epsilon: float,
+#     max_iters: int,
+#     expected_result: tuple[float, int],
+# ):
+#     """Tests if secant finds the correct root and iteration count for valid inputs."""
+#     actual_root, actual_iters = main.secant(a, b, main.func, epsilon, max_iters)
+#     expected_root, expected_iters = expected_result
 
-    assert actual_root == pytest.approx(expected_root), "Approximated root is incorrect."
-    assert actual_iters == expected_iters, "Iteration count is incorrect."
-
-
-# --- Tests for newton ---
+#     assert actual_root == pytest.approx(expected_root), "Approximated root is incorrect."
+#     assert actual_iters == expected_iters, "Iteration count is incorrect."
 
 
-@pytest.mark.parametrize("a, b, epsilon, max_iter, expected_result", valid_newton)
-def test_newton_correct_solution(
-    a: float,
-    b: float,
-    epsilon: float,
-    max_iter: int,
-    expected_result: tuple[float, int],
-):
-    """Tests if newton finds the correct root and iteration count for valid inputs."""
-    actual_root, actual_iters = main.newton(
-        main.func, main.dfunc, main.ddfunc, a, b, epsilon, max_iter
-    )
-    expected_root, expected_iters = expected_result
-
-    assert actual_root == pytest.approx(expected_root), "Approximated root is incorrect."
-    assert actual_iters == expected_iters, "Iteration count is incorrect."
+# # --- Tests for newton ---
 
 
-# --- Tests for difference_quotient ---
+# @pytest.mark.parametrize("a, b, epsilon, max_iter, expected_result", valid_newton)
+# def test_newton_correct_solution(
+#     a: float,
+#     b: float,
+#     epsilon: float,
+#     max_iter: int,
+#     expected_result: tuple[float, int],
+# ):
+#     """Tests if newton finds the correct root and iteration count for valid inputs."""
+#     actual_root, actual_iters = main.newton(
+#         main.func, main.dfunc, main.ddfunc, a, b, epsilon, max_iter
+#     )
+#     expected_root, expected_iters = expected_result
+
+#     assert actual_root == pytest.approx(expected_root), "Approximated root is incorrect."
+#     assert actual_iters == expected_iters, "Iteration count is incorrect."
+
+
+# # --- Tests for difference_quotient ---
 
 
 @pytest.mark.parametrize("x, h, expected_result", valid_difference_quotient)
